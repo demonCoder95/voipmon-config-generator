@@ -2,10 +2,10 @@
 
 # a simple lookup method to facilitate searching into the descriptions structure
 def get_description(param_name):
-    return descriptions[param_name]
+    return db_param_descriptions[param_name]
 
 # The exhaustive list of descriptions of all parameters
-descriptions = {
+db_param_descriptions = {
 
     "sqldriver" : """This is the SQL driver used for the database. Can be 'mysql'
 or 'odbc'.\n""",

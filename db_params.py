@@ -1,6 +1,6 @@
 # This provides a list of all the DB Configuration Params
 from params import ConfigParameter
-from param_desc import get_description
+from db_params_desc import get_description
 
 # Creating configuration parameter objects for each parameter
 db_param_sqldriver = ConfigParameter("sqldriver", "", "mysql", get_description("sqldriver"))
