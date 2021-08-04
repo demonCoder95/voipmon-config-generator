@@ -14,7 +14,7 @@ def get_description(param):
     return pcap_store_param_descriptions[param]
 
 pcap_store_param_descriptions = {
-    "maxcapsize" : """The parameter to control the maximum size of the PCAP
+    "maxpcapsize" : """The parameter to control the maximum size of the PCAP
 file which will record the stream packets. When the size exceeds this limit,
 the stream packets are still processed for statistics to be populated in the
 database (like the jitter/mos entries for the 'rtp*' tables), but the PCAPs of
@@ -94,7 +94,7 @@ buffer which can store data from multiple packets is more optimal. The entire
 buffer is then written to disk (in spooldir) in an operation that utilizes the
 I/O in a sequential manner and provides better throughput performance - since
 'spooldir' writes are throughput sensitive (bulks of data are written).
-An example of this is an optimal value of 8184.\n""",
+An example of this is an optimal value of 8184 bytes.\n""",
 
     # Parameters related to compression
     "pcap_dump_zip" : """This parameter is used to enable ZIP based compression
@@ -215,6 +215,7 @@ finish processing the blocks of data. This parameter takes values 'yes' and
 'no'.\n""",
 
     # TAR parameters
+    # Look into the 'concurrent calls data' given below
     "tar" : """When writing PCAPs to file, instead of writing each call to a
 separate file, you can choose to bundle them together in a TAR archive. The
 TAR file naming is derived on the basis of call start time, in the following
@@ -249,7 +250,7 @@ compression parameter 'pcap_dump_zip[level]_sip'.
 
 If TAR compression is disabled, sniffer keeps track of the offset of each file
 inside the archive, in the database. This allows for quick seeking when files
-are required to be downloaded form the GUI, or accessed otherwise. In the event
+are required to be downloaded from the GUI, or accessed otherwise. In the event
 that TAR compression is enabled for SIP, the offset can no longer be maintained
 due to compression of the archived data, therefore this can result in large I/O
 activity when files are to be downloaded from GUI or extracted from the archive.
@@ -473,9 +474,9 @@ THIS PARAMETER IS BEING DEPRECATED IN FAVOR OF 'saveaudio_afterconnect'.\n""",
 audio from the time the first 'Invite' packet is received. This allows the
 audio length to be equal to the SIP serialization length (used to measure size
 of the SIP stream when writing SIP packets from memory to the PCAPs). This is
-typically set to 'yes' to generate silence audio, which helps in match audio 
-length with SIP length. This is helpful when you want to combine SIP and RTP
-PCAPs of a call, for your analysis.
+typically set to 'yes' to generate silence audio, which helps in matching
+audio length with SIP length. This is helpful when you want to combine SIP and
+RTP PCAPs of a call, for your analysis.
 This parameter accepts values 'yes' and 'no'.\n""",
 
     "saveaudio_stereo" : """This parameter controls audio storing in separate
@@ -611,7 +612,7 @@ typically disabled. Enable this only if you want to precisely detect clipping
 in packet for purposes of analysis.
 This parameter accepts values 'yes' and 'no'.\n""",
 
-    "fasdetect" : """This parameter enables the 'False Answer Supevision'
+    "fasdetect" : """This parameter enables the 'False Answer Supervision'
 detection. This is a practice of detecting when the call has actually been
 answered to ensure correct call duration is stored on the operator end. This
 is typically done by detecting the ring tones after the call has been dialed

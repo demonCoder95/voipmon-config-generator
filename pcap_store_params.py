@@ -1,9 +1,8 @@
-from typing import get_args
-from pcap_store_params_desc import pcap_store_param_descriptions, get_description
+from pcap_store_params_desc import get_description
 from params import ConfigParameter
 
 # Define the configuration objects of each config entry
-ps_param_max_cap_size = ConfigParameter("maxcapsize", 0, 0, get_description("maxcapsize"))
+ps_param_max_pcap_size = ConfigParameter("maxpcapsize", 0, 0, get_description("maxpcapsize"))
 
 ps_param_spool_dir = ConfigParameter("spooldir", "", "/var/spool/voipmonitor", get_description("spooldir"))
 ps_param_spool_dir_rtp = ConfigParameter("spooldir_rtp", "", "", get_description("spooldir_rtp"))
@@ -132,7 +131,7 @@ ps_param_auto_clean_min_gb = ConfigParameter("autocleanmingb", 0, 5, get_descrip
 
 # A convenient data structure group all the configuration objects
 pcap_store_params = {
-    "maxcapsize" : ps_param_max_cap_size,
+    "maxpcapsize" : ps_param_max_pcap_size,
     "spooldir" : ps_param_spool_dir,
     "spooldir_rtp" : ps_param_spool_dir_rtp,
     "spooldir_graph" : ps_param_spool_dir_graph,
