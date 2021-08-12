@@ -117,7 +117,23 @@ proto_param_udp_port_mgcp_gateway = ConfigParameter("udp_port_mgcp_gateway", Non
 proto_param_tcp_port_mgcp_call_agent = ConfigParameter("tcp_port_mgcp_callagent", None, 2727, get_description("tcp_port_mgcp_callagent"))
 proto_param_udp_port_mgcp_call_agent = ConfigParameter("udp_port_mgcp_callagent", None, 2727, get_description("udp_port_mgcp_callagent"))
 
-    # End of protocol processing parameters
+proto_param_ss7 = ConfigParameter("ss7", None, "no", get_description("ss7"))
+proto_param_ss7_rudp_port = ConfigParameter("ss7_rdup_port", None, 7000, get_description("ss7_rudp_port"))
+
+proto_param_mos_g729 = ConfigParameter("mos_g729", None, "no", get_description("mos_g729"))
+proto_param_mos_lqo = ConfigParameter("mos_lqo", None, "no", get_description("mos_lqo"))
+proto_param_mos_lqo_bin = ConfigParameter("mos_lqo_bin", None, None, get_description("mos_lqo_bin"))
+proto_param_mos_lqo_ref = ConfigParameter("mos_lqo_ref", None, None, get_description("mos_lqo_ref"))
+proto_param_mos_lqo_ref_16 = ConfigParameter("mos_lqo_ref16", None, None, get_description("mos_lqo_ref16"))
+
+proto_param_dscp = ConfigParameter("dscp", None, "no", get_description("dscp"))
+proto_param_update_dst_num_on_answer = ConfigParameter("update_dstnum_onanswer", None, "no", get_description("update_dstnum_onanswer"))
+proto_param_custom_headers_last_value = ConfigParameter("custom_headers_last_value", None, "custom_headers_last_value", get_description("custom_headers_last_value"))
+proto_param_match_header = ConfigParameter("matchheader", None, None, get_description("matchheader"))
+proto_param_call_id_merge_header = ConfigParameter("callidmerge_header", None, None, get_description("callidmerge_header"))
+proto_param_call_id_merge_secret = ConfigParameter("callidmerge_secret", None, None, get_description("callidmerge_secret"))
+proto_param_call_id_alternative = ConfigParameter("call_id_alternative", None, None, get_description("call_id_alternative"))
+proto_param_domain_port = ConfigParameter("domainport", None, "no", get_description("domainport"))
 
 
 # A convenient data structure to bundle all the cofiguration parameter objects
@@ -230,5 +246,23 @@ proto_params = {
     "udp_port_mgcp_gateway": proto_param_udp_port_mgcp_gateway,
     "tcp_port_mgcp_callagent": proto_param_tcp_port_mgcp_call_agent,
     "udp_port_mgcp_callagent": proto_param_udp_port_mgcp_call_agent,
+
+    "ss7": proto_param_ss7,
+    "ss7_rudp_port": proto_param_ss7_rudp_port,
+
+    "mos_g729": proto_param_mos_g729,
+    "mos_lqo": proto_param_mos_lqo,
+    "mos_lqo_bin": proto_param_mos_lqo_bin,
+    "mos_lqo_ref": proto_param_mos_lqo_ref,
+    "mos_lqo_ref16": proto_param_mos_lqo_ref_16,
+
+    "dscp": proto_param_dscp,
+    "update_dstnum_onanswer": proto_param_update_dst_num_on_answer,
+    "custom_headers_last_value": proto_param_custom_headers_last_value,
+    "matchheader": proto_param_match_header,
+    "callidmerge_header": proto_param_call_id_merge_header,
+    "callidmerge_secret": proto_param_call_id_merge_secret,
+    "call_id_alternative": proto_param_call_id_alternative,
+    "domainport": proto_param_domain_port,
 
 }

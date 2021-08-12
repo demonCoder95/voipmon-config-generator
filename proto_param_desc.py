@@ -702,4 +702,113 @@ This parameter accepts values in the standard port range of 1-65535.\n""",
 
     # ====== END OF MGCP PROTOCOL PARAMETERS =======
     # ======= END OF PROTOCOL PARAMETERS ===========
+
+    # SS7 Parameters
+    "ss7": """This parameter enables SS7 signalling processing.
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "ss7_rudp_port": """This parameter configures the port number for
+detecting the SS7 Signalling Reliable User Datagram Protocol packets.
+This parameter accepts port values 1-65535.\n""",
+
+    # G729 Codec MOS score parameters
+    "mos_g729": """This parameter enables specific Mean Opinion Score (MOS)
+calculations for the G.729 codec. If enabled, all CDRs with zero packet loss
+and stable delay values will have a MOS score of 3.92. And for unstable delay
+and packet loss MOS will be computed based on the ITU-T standard named
+Perceptual Evaluation of Speech Quality (PESQ). For simpler correlation
+between packet loss and delay, leave this disabled. In this case, the MOS will
+be computed just like for the G.711 codec. This is typically disabled.
+
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "mos_lqo": """This parameter enables the Mean Opinion Score (MOS)
+calculation based on the Listening Quality Objective (LQO) method by ITU-T.
+This works by comparing recorded audio with reference audio. The reference
+audio cannot be longer than the specified limit of 20-25 seconds. Since this
+test is for prerecorded audio, it cannot test quality of live calls. 
+
+A PESQ license is required from ITU-T as well as the program binary for using
+this functionality. This functionality is typically disabled.
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "mos_lqo_bin": """This parameter configures the path to the PESQ program
+binary used by the VoIP Monitor to perform MOS calculations.
+This parameter accepts the name of the binary, given it is available in the 
+$PATH variable of the system.\n""",
+
+    "mos_lqo_ref": """This parameter provides path to the reference audio to
+be used by the PESQ program for MOS calculations.
+This parameter accepts valid path names to the audio file.\n""",
+
+    "mos_lqo_ref16": """This parameter provides path to the reference audio of
+16kHz to be used by the PESQ program for MOS calculations.
+This parameter accepts valid path names to the audio file.\n""",
+
+    "dscp": """This parameter configures enabling of Differentiated Services
+Code Point values to be saved in the database. The 'cdr.dscp' entry is 32-bit
+in size and is constructed as follows:
+    8-bits - SIP Caller DSCP field bits from packets
+    8-bits - SIP Called DSCP field bits from packets
+    8-bits - RTP Caller DSCP field bits from packets
+    8-bits - RTP Called DSCP field bits from packets
+This can generate a lot of DB queries depending on the size of the database.
+It also generates additional I/O pressure. Typically disabled.
+
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "update_dstnum_onanswer": """This parameter allows updating the
+'cdr.called' field when the called number answers. This is useful in cases
+when a 'hunt group' is called that has one SIP Call-ID and it can match to a
+number of phone numbers. When a SIP 200 OK is received and SIP branch value is
+setup.
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "custom_headers_last_value": """This parameter configures the value of a
+custom header to be set to the last received value in a packet. If set to 'no'
+the first recieved value will be set. These custom headers can be found in GUI
+-> settings -> CDR custom headers.
+This parameter accepts values 'yes' and 'no'.\n """,
+
+    "matchheader": """This parameter enables saving values of custom headers
+which can then be used to match to next CDRs. One use case of this is to detect
+multiple legs of one call, based on all of the calls using the same header
+value of 'in-reply-to'. These values are stored in the database in the
+'cdr_next.match_header' column.
+This parameter accepts valid custom header values.\n""",
+
+    "callidmerge_header": """This paramter is used to enable merging legs of
+the same call with different CallIDs. The second leg of the call with a
+different CallID has a parent CallID field in the first SIP INVITE packet
+which can be used to link it to the parent call and perform call merging. The
+header name used to perform this is specified in this parameter. E-g it can be
+    callidmerge_header = Parent-Call-ID
+Then each leg of a call will have this header attached to it, which will be
+used to merge it with the parent call.
+This parameter accepts value header fields.\n""",
+
+    "callidmerge_secret": """This parameter configures the secret string used
+to XOR with the 'callidmerge_header' field and base64 encode the result to
+obfuscate the header name. If you have used such a string and are performing
+obfuscation, this parameter will provide the secret string to undo that, and
+read the header name to perform callID merging.
+This parameter accepts strings.\n""",
+
+    "call_id_alternative": """This parameter provides an alternate set of
+headers for call merging (also see 'callidmerge_header' field). This was
+developed specifically for Cisco Unified Communications Manager (CUCM). It
+provides a list of SIP header. The content values can be delimited by ';', if
+present in the header. For example, for the CUCS 11.5:
+    call_id_alternative = Session-ID,Join
+
+This parameter accepts header fields.\n""",
+
+    "domainport": """This parameter allows saving of the port number alongside
+the domain when processing user@domain:port entry in the SIP header. This is
+saved in the 'cdr.domain' column. This is typically disabled.
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    
+
+
 }

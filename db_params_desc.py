@@ -409,5 +409,96 @@ operations to be performed in a separate thread. It is recommended not to
 configure this parameter unless absolutely required. This parameter takes
 values 'yes' and 'no'.\n""",
 
+    # Backup parameters for the database
+    "database_backup_from_date": """This parameter configures the starting
+date for the database backup to be performed. All the CDR entries that have
+the 'cdr.calldate' parameter same or earlier to this will be matched.
+An example input can be:
+    database_backup_from_date = 2021-08-10 14:00:00
+This parameter accepts date inputs in the format shown above.\n""",
+
+    "database_backup_to_date": """This parameter configures the ending
+date for the database backup to be performed. All the CDR entries that have
+the 'cdr.calldate' parameter same or earlier to this will be matched.
+An example input can be:
+    database_backup_from_date = 2021-08-14 17:00:00
+This parameter accepts date inputs in the format shown above.\n""",
+
+    "database_backup_from_mysqlhost": """This parameter configures the host
+identifier (hostname/IP address) of the backup server that will store the
+backup entries.
+This parameter accepts hostnames and IP addresses.\n""",
+
+    "database_backup_from_mysqldb": """This parameter configures the name
+of the database in the backup server that will store the backup.
+This parameter accepts a name string.\n""",
+
+    "database_backup_from_mysqlusername": """This parameter configures the
+username for the backup database.
+This parameter accepts any valid username in the backup server.\n""",
+
+    "database_backup_from_mysqlpassword": """This parameter configures the
+password for the user specified in the backup database.
+This parameter accepts password strings.\n""",
+
+    "database_backup_pause": """This parameter controls the delay when a
+backup is being performed, it can be 'paused' for the indicated duration to
+allow sufficient time for flushing the data out of buffers. 
+This parameter accepts values in seconds > 0.\n""",
+
+    "database_backup_insert_threads": """This parameter configures the number
+of threads that will be performing INSERTs in the backup database.
+This parameter acceots integers > 0.\n""",
+    
+    # SSL and TLS settings for DB backup
+    "database_backup_from_mysqlsslkey" : """If the backup MySQL server is
+configured to use SSL encryption for connectivity, this parameter applies.
+It specifies the location of the file containing the SSL Private Key of the
+client that wishes to connect to the MySQL server. It can be of the form 
+/etc/ssl/client-key.pem'.\n""",
+
+    "database_backup_from_mysqlsslcert" : """If the backup MySQL server is
+configured to use SSL encryption for connectivity, this parameter applies.
+It specifies the location of the file containing the SSL Public Key
+Certificate of the client that wishes to connect to the MySQL server.
+It can be of the form '/etc/ssl/client-cert.pem'.\n""",
+
+    "database_backup_from_mysqlsslcacert" : """If the backup MySQL server is
+configured to use SSL encryption for connectivity, this parameter applies.
+It specifies the location of the file containing the SSL Certificate Authority
+Certificate. This is needed to verify the authenticity of the Public Key
+Certificate of the client as specified by the 'mysqlsslcert' parameter.
+The Public Key certificate must be signed by the Public Key CA Certificate,
+otherwise, it is considered invalid. 
+This parameter can be of the form '/etc/ssl/ca-cert.pem'.\n""",
+
+    "database_backup_from_mysqlsslcapath" : """If the backup MySQL server is
+configured to use SSL encryption for connectivity, this parameter applies.
+It specifies the directory which contains more then one SSL Certificate 
+Authority certificates for determining the authenticity of the client's Public
+Key Certificate as indicated by 'mysqlsslcert' parameter. 
+This parameter can be of the form '/etc/ssl/capath'.\n""",
+
+    "database_backup_from_mysqlsslciphers" : """This is a colon separated list
+of ciphers that are allowed to be used for encrypted connection with the
+backup MySQL server. The values it can contain are 'AES128-SHA' and
+'DHE-RSA-AES128-GCM-SHA256'.\n""",
+
+    # Other backup DB params
+    "database_backup_pass_rows": """This parameter configures the maximum
+number of rows to backup per cycle. This value is typically in thousands.
+This parameter accepts integer values > 0.\n""",
+
+    "database_backup_desc_dir": """The default behavior is to select CDRs
+from oldest to newest, for backup. This parameter can be used to configure the
+opposite behavior, i.e. CDR backup is done from newest to oldest entry.
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "database_backup_skip_register": """This parameter is used to select
+all the 'register*' tables in the database for backup. These aren't typically
+disabled unless needed.
+This parameter accepts values 'yes' and 'no'.\n""",
+
+
 }
 

@@ -67,6 +67,27 @@ db_param_clean_database_ss7 = ConfigParameter("cleandatabase_ss7", 0, 0, get_des
 db_param_partition_operations_enable_from_to = ConfigParameter("partition_operations_enable_fromto", "", "", get_description("partition_operations_enable_fromto"))
 db_param_partition_operations_in_thread = ConfigParameter("partition_operations_in_thread", "", "no", get_description("partition_operations_in_thread"))
 
+# Database backup parameters
+db_param_database_backup_from_date = ConfigParameter("database_backup_from_date", None, None, get_description("database_backup_from_date"))
+db_param_database_backup_to_date = ConfigParameter("database_backup_to_date", None, None, get_description("database_backup_to_date"))
+db_param_database_backup_from_mysqlhost = ConfigParameter("database_backup_from_mysqlhost", None, None, get_description("database_backup_from_mysqlhost"))
+db_param_database_backup_from_mysqldb = ConfigParameter("database_backup_from_mysqldb", None, None, get_description("database_backup_from_mysqldb"))
+db_param_database_backup_from_mysqlusername = ConfigParameter("database_backup_from_mysqlusername", None, None, get_description("database_backup_from_mysqlusername"))
+db_param_database_backup_from_mysqlpassword = ConfigParameter("database_backup_from_mysqlpassword", None, None, get_description("database_backup_from_mysqlpassword"))
+db_param_database_backup_pause = ConfigParameter("database_backup_pause", None, 300, get_description("database_backup_pause"))
+db_param_database_backup_insert_threads = ConfigParameter("database_backup_insert_threads", None, 1, get_description("database_backup_insert_threads"))
+
+# Database backup SSL/TLS parameters
+db_param_database_backup_from_mysql_ssl_key = ConfigParameter("database_backup_from_mysqlsslkey", None, None, get_description("database_backup_from_mysqlsslkey"))
+db_param_database_backup_from_mysql_ssl_cert = ConfigParameter("database_backup_from_mysqlsslcert", None, None, get_description("database_backup_from_mysqlsslcert"))
+db_param_database_backup_from_mysql_ssl_cacert = ConfigParameter("database_backup_from_mysqlsslcacert", None, None, get_description("database_backup_from_mysqlsslcacert"))
+db_param_database_backup_from_mysql_ssl_capath = ConfigParameter("database_backup_from_mysqlsslcapath", None, None, get_description("database_backup_from_mysqlsslcapath"))
+db_param_database_backup_from_mysql_ssl_ciphers = ConfigParameter("database_backup_from_mysqlsslciphers", None, None, get_description("database_backup_from_mysqlsslciphers"))
+
+db_param_database_backup_pass_rows = ConfigParameter("database_backup_pass_rows", None, 10000, get_description("database_backup_pass_rows"))
+db_param_database_backup_desc_dir = ConfigParameter("database_backup_desc_dir", None, "no", get_description("database_backup_desc_dir"))
+db_param_database_backup_skip_register = ConfigParameter("database_backup_skip_register", None, "no", get_description("database_backup_skip_register"))
+
 # A convenient data structure to iterate over DB configuration parameters
 db_params = {
     "sqldriver" : db_param_sqldriver,
@@ -127,6 +148,24 @@ db_params = {
 
     "partition_operations_enable_fromto" : db_param_partition_operations_enable_from_to,
     "partition_operations_in_thread" : db_param_partition_operations_in_thread,
+
+    # Database backup parameters
+    "database_backup_from_date": db_param_database_backup_from_date,
+    "database_backup_to_date": db_param_database_backup_to_date,
+    "database_backup_from_mysqlhost": db_param_database_backup_from_mysqlhost,
+    "database_backup_from_mysqldb": db_param_database_backup_from_mysqldb,
+    "database_backup_from_mysqlusername": db_param_database_backup_from_mysqlusername,
+    "database_backup_from_mysqlpassword": db_param_database_backup_from_mysqlpassword,
+    "database_backup_pause": db_param_database_backup_pause,
+    "database_backup_insert_threads": db_param_database_backup_insert_threads,
+    "database_backup_from_mysqlsslkey": db_param_database_backup_from_mysql_ssl_key,
+    "database_backup_from_mysqlsslcert": db_param_database_backup_from_mysql_ssl_cert,
+    "database_backup_from_mysqlsslcacert": db_param_database_backup_from_mysql_ssl_cacert,
+    "database_backup_from_mysqlsslcapath": db_param_database_backup_from_mysql_ssl_capath,
+    "database_backup_from_mysqlsslciphers": db_param_database_backup_from_mysql_ssl_ciphers,
+    "database_backup_pass_rows": db_param_database_backup_pass_rows,
+    "database_backup_desc_dir": db_param_database_backup_desc_dir,
+    "database_backup_skip_register": db_param_database_backup_skip_register,
     
 }
 

@@ -5,6 +5,7 @@ from db_params import db_params
 from server_client_params import server_client_params
 from pcap_store_params import pcap_store_params
 from proto_params import proto_params
+from other_config_params import other_config_params
 
 
 def print_parameters(param_list, param_type):
@@ -27,9 +28,10 @@ def main():
     print_parameters(server_client_params, "Server/Client")
     print_parameters(pcap_store_params, "PCAP Store")
     print_parameters(proto_params, "Protocol")
+    print_parameters(other_config_params, "Other Config")
 
     total_param_count = len(db_params) + len(server_client_params) + \
-        len(pcap_store_params) + len(proto_params)
+        len(pcap_store_params) + len(proto_params) + len(other_config_params)
 
     print("Total parameters in the program database: {}".format(
         total_param_count))
