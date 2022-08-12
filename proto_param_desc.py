@@ -808,6 +808,100 @@ the domain when processing user@domain:port entry in the SIP header. This is
 saved in the 'cdr.domain' column. This is typically disabled.
 This parameter accepts values 'yes' and 'no'.\n""",
 
+    # Secure RTP parameters. The keys supported are the ones suppored by the
+    # Session Description Protocol (SDP). These include:
+    #   AES_CM_128_HMAC_SHA1_32
+    #   AES_CM_128_HMAC_SHA1_80
+    "srtp_rtp": """This parameter enables decryption for RTP payloads in SRTP.
+This is typically disabled and decryption is only performed when the user
+requests audio on the GUI.
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "srtp_rtcp": """This parameter enables decryption for RTCP payloads in
+SRTP. This is typically enabled.
+This parameter accepts values 'yes' and' no'.\n""",
+
+    # Secure SIP with SSL/TLS support parameters
+    "ssl": """This parameter enables SIP SSL/TLS support.
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "ssl_ipport": """This parameter configures the IP Address and port number
+of the SSL server that is hosting the private key to be used for decryption.
+This parameter is also used to detect the WebSocket protocol over SSL/TLS
+(the WebRTC standard).
+
+The parameter is configured in a format:
+    ssl_ipport = 192.168.10.10 5061 /path/to/your.key
+
+here,
+    - 192.168.10.10 is the IP Address of the SSL server.
+    - 5061    is the port number for the SSL server
+    - /path/to/you.key is the path on the SSL server to the private key
+      'your.key'.
+
+Note: If the Diffie Hellman Key Exchange is being used in the cipher that is
+encrypting SIP, SSL/TLS cannot be decrypted this way. This method is only
+suitable for pre-generated Public Key Infrastructure (PKI) based RSA keys.\n""",
+
+    "ssl_store_sessions_expiration_hours": """This parameter configures the
+duration for storing the SSL session details.
+This parameter accepts hour values > 0.\n""",
+
+    "ssl_sessionkey_udp": """This parameter enables parsing of SSL Session
+Keys from a UDP packet. TLS/SSL uses 4 session keys in each session and
+they're all used in conjunction to have a fully enabled SSL session. This is
+typically disabled unless specifically used in the infrastructure that is
+securing SIP with SSL.
+
+The UDP packet that is received with such information can look something like
+this:
+    {
+        "cipher":"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+        "sessionid":"BAD9ADC061C0A09C5DCCD28DB31B71E3BEDD0894043A38012357DC992C12516C",
+        "mastersecret": "A5433C3A244945B706112EBBAF3FA5F0995BjACOC7883EC0F13952B9F89A0F6657CCC4279BE4727631DBBFA93A91E067"
+    }
+
+This parameter accepts values 'yes' and 'no'.\n""",
+
+    "ssl_sessionkey_udp_port": """This parameter configures the port number
+for parsing the SSL keys from UDP packets. Any packet with dest_port same as
+this will be subject to parsing for extraction of SSL Session Keys. This can
+be used in conjunction with 'ssl_sessionkey_udp_ip'.
+
+This parameter accepts port values 1-65535.\n""",
+
+    "ssl_sessionkey_udp_ip": """This parameter configures the IP Address for
+parsing the SSL keys from UDP packets. Any packet with dest_ip same as this
+will be subject to parsing for extraction of SSL Session Keys. This can be
+used in conjuction with 'ssl_sessionkey_udp_port'. It can also accept a subnet
+value like this:
+    ssl_sessionkey_udp_ip = 192.168.10.0/24
+
+This parameter accepts IP Address values.\n""",
+
+    "ssl_store_sessions": """This parameter configures storing of sessions
+data such as session keys to use between restarts. This is typically disabled.
+This parameter accepts values 'yes' and 'no'.
+
+Additionally, this parameter can also be used to set the type of table to use
+in the database for storing the SSL/TLS keys. For that, the parameter accepts
+values:
+    'persistent': This stores the table in InnoDB
+    'memory': This stores the table in the sniffer memory
+
+The persistent option is good since it allows for saving of sessions between
+restarts, however, it might expose an additional security risk to the system.
+
+So, this parameter accepts values 'yes', 'no', 'persistent' and 'memory'.\n""",
+
+    # Need to look into this, with detail, what does it mean to have a 'bad
+    # finished digest'?
+    "ssl_ignore_error_bad_finished_digest": """This parameter is not used in
+the sniffer code, there is no affect in configuring it.
+The parameter accepts values 'yes' and 'no'.\n""",
+
+
+
     
 
 

@@ -135,6 +135,18 @@ proto_param_call_id_merge_secret = ConfigParameter("callidmerge_secret", None, N
 proto_param_call_id_alternative = ConfigParameter("call_id_alternative", None, None, get_description("call_id_alternative"))
 proto_param_domain_port = ConfigParameter("domainport", None, "no", get_description("domainport"))
 
+proto_param_srtp_rtp = ConfigParameter("srtp_rtp", None, "no", get_description("srtp_rtp"))
+proto_param_srtp_rtcp = ConfigParameter("srtp_rtcp", None, "yes", get_description("srtp_rtcp"))
+
+# SIP SSL/TLS Support parameters
+proto_param_ssl = ConfigParameter("ssl", None, "no", get_description("ssl"))
+proto_param_ssl_ip_port = ConfigParameter("ssl_ipport", None, None, get_description("ssl_ipport"))
+proto_param_ssl_store_sessions_expiration_hours = ConfigParameter("ssl_store_sessions_expiration_hours", None, 12, get_description("ssl_store_sessions_expiration_hours"))
+proto_param_ssl_session_key_udp = ConfigParameter("ssl_sessionkey_udp", None, "no", get_description("ssl_sessionkey_udp"))
+proto_param_ssl_session_key_udp_port = ConfigParameter("ssl_sessionkey_udp_port", None, None, get_description("ssl_sessionkey_udp_port"))
+proto_param_ssl_session_key_udp_ip = ConfigParameter("ssl_sessionkey_udp_ip", None, None, get_description("ssl_sessionkey_udp_ip"))
+proto_param_ssl_store_sessions = ConfigParameter("ssl_store_sessions", None, "no", get_description("ssl_store_sessions"))
+proto_param_ssl_ignore_error_bad_finished_digest = ConfigParameter("ssl_ignore_error_bad_finished_digest", None, "yes", get_description("ssl_ignore_error_bad_finished_digest"))
 
 # A convenient data structure to bundle all the cofiguration parameter objects
 proto_params = {
@@ -264,5 +276,19 @@ proto_params = {
     "callidmerge_secret": proto_param_call_id_merge_secret,
     "call_id_alternative": proto_param_call_id_alternative,
     "domainport": proto_param_domain_port,
+
+    "srtp_rtp": proto_param_srtp_rtp,
+    "srtp_rtcp": proto_param_srtp_rtcp,
+
+    # SIP SSL/TLS Support parameters
+    "ssl": proto_param_ssl,
+    "ssl_ipport": proto_param_ssl_ip_port,
+    "ssl_store_sessions_expiration_hours": proto_param_ssl_store_sessions_expiration_hours,
+    "ssl_sessionkey_udp": proto_param_ssl_session_key_udp,
+    "ssl_sessionkey_udp_port": proto_param_ssl_session_key_udp_port,
+    "ssl_sessionkey_udp_ip": proto_param_ssl_session_key_udp_ip,
+    "ssl_store_sessions": proto_param_ssl_store_sessions,
+    "ssl_ignore_error_bad_finished_digest": proto_param_ssl_ignore_error_bad_finished_digest,
+    
 
 }
